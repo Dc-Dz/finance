@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxia.finance.mapper.PermissionsMapper">
+
+  <resultMap id="PermissionsMap" type="com.qianxia.finance.domain.Permissions">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="permissions" jdbcType="VARCHAR" property="permissions" />
+  </resultMap>
+
+  <sql id="PermissionsList">
+    id, permissions
+  </sql>
+
+</mapper>

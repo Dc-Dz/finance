@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>个人理财系统</title>
+    <!-- 引入bootstrap样式 -->
+    <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet" type="text/css">
+    <!--图标库-->
+    <link th:href="@{/lyear/css/materialdesignicons.min.css}" rel="stylesheet" type="text/css"/>
+    <!--弹出框样式-->
+    <link th:href="@{/lyear/jconfirm/jquery-confirm.min.css}" rel="stylesheet" type="text/css"/>
+    <!--自定义样式-->
+    <link href="../lyear/css/style.min.css" th:href="@{/lyear/css/style.min.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<div class="lyear-layout-web">
+    <div class="lyear-layout-container">
+        <!--左侧导航-->
+        <div th:replace="user/common/leftbar::#leftbaraside"></div>
+        <!--头部信息-->
+        <div th:replace="user/common/topbar::#topbarheader"></div>
+
+        <!--页面主要内容-->
+        <main class="lyear-layout-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>我的理财</h4>
+                            </div>
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                                <!--零钱理财 -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                               href="#collapseOne"
+                                               aria-expanded="true" aria-controls="collapseOne">
+                                                零钱理财
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne"
+                                         class="panel-collapse collapse in" role="tabpanel"
+                                         aria-labelledby="headingOne">
+                                        <div class="panel-body">
+
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="info">序号</th>
+                                                    <th class="info">产品名称</th>
+                                                    <th class="info">起投金额</th>
+                                                    <th class="info">起投时间</th>
+                                                    <th class="info">投资期限</th>
+                                                    <th class="info">收益</th>
+                                                    <th class="info">平均收益率</th>
+                                                    <th class="info">投资状态</th>
+                                                    <th class="info">相关操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>名称</td>
+                                                    <td>1000元</td>
+                                                    <td>yyyy-MM-dd</td>
+                                                    <td>30天</td>
+                                                    <td>30元</td>
+                                                    <td>2.1%</td>
+                                                    <td>参考下3</td>
+                                                    <!--<td th:if="${ucm.status==1}" th:text="持有中"></td>-->
+                                                    <!--<td th:if="${ucm.status==2}" th:text="已失效"></td>-->
+                                                    <!--<td th:if="${ucm.status==3}" th:text="已撤销"></td>-->
+                                                    <td>
+                                                        <button class="btn btn-danger btn-sm ucm_btn">
+															<span class="glyphicon glyphicon-remove"
+                                                                  aria-hidden="true"></span> 撤销
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>很抱歉！暂时还没有查询到您的零钱理财信息</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--工资理财 -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion"
+                                               href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                工资理财
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo"
+                                         role="tabpanel"
+                                         aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="info">序号</th>
+                                                    <th class="info">产品名称</th>
+                                                    <th class="info">起投金额</th>
+                                                    <th class="info">起投时间</th>
+                                                    <th class="info">投资期限</th>
+                                                    <th class="info">收益</th>
+                                                    <th class="info">平均收益率</th>
+                                                    <th class="info">投资状态</th>
+                                                    <th class="info">相关操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>参考下2</td>
+                                                    <!--<td th:if="${upm.payMoney.type==1}" th:text="国债"></td>-->
+                                                    <!--<td th:if="${upm.payMoney.type==2}" th:text="期货"></td>-->
+                                                    <td>1000元</td>
+                                                    <td>yyyy-MM-dd</td>
+                                                    <td>期限</td>
+                                                    <td>30元</td>
+                                                    <td>1%</td>
+                                                    <td>参考下3</td>
+                                                    <!--<td th:if="${upm.status==1}" th:text="持有中"></td>-->
+                                                    <!--<td th:if="${upm.status==2}" th:text="已失效"></td>-->
+                                                    <!--<td th:if="${upm.status==3}" th:text="已撤销"></td>-->
+                                                    <td>
+                                                        <button class="btn btn-danger btn-sm upm_btn">
+															<span class="glyphicon glyphicon-remove"
+                                                                  aria-hidden="true"></span> 撤销
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>很抱歉！暂时还没有查询到您的工资理财信息</h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--期限理财 -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion"
+                                               href="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                                                期限理财
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree"
+                                         role="tabpanel"
+                                         aria-labelledby="headingThree">
+                                        <div class="panel-body">
+
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="info">序号</th>
+                                                    <th class="info">产品名称</th>
+                                                    <th class="info">起投金额</th>
+                                                    <th class="info">起投时间</th>
+                                                    <th class="info">投资期限</th>
+                                                    <th class="info">收益</th>
+                                                    <th class="info">平均收益率</th>
+                                                    <th class="info">投资状态</th>
+                                                    <th class="info">相关操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>名称</td>
+                                                    <td>1000元</td>
+                                                    <td>yyyy-MM-dd</td>
+                                                    <td>期限</td>
+                                                    <td>30元</td>
+                                                    <td>1%</td>
+                                                    <td>参考下3</td>
+                                                    <!--<td th:if="${utf.status==1}" th:text="持有中"></td>-->
+                                                    <!--<td th:if="${utf.status==2}" th:text="已失效"></td>-->
+                                                    <!--<td th:if="${utf.status==3}" th:text="已撤销"></td>-->
+                                                    <td>
+                                                        <button class="btn btn-danger btn-sm utf_btn">
+															<span class="glyphicon glyphicon-remove"
+                                                                  aria-hidden="true"></span> 撤销
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>很抱歉！暂时还没有查询到您的期限理财信息</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--基金理财 -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion"
+                                               href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+                                                基金理财
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour"
+                                         role="tabpanel"
+                                         aria-labelledby="headingFour">
+                                        <div class="panel-body">
+
+                                            <table class="table table-hover table-striped">
+                                                <thead>
+                                                <tr>
+                                                    <th class="info">序号</th>
+                                                    <th class="info">产品名称</th>
+                                                    <th class="info">起投金额</th>
+                                                    <th class="info">起投时间</th>
+                                                    <th class="info">投资期限</th>
+                                                    <th class="info">收益</th>
+                                                    <th class="info">平均收益率</th>
+                                                    <th class="info">投资状态</th>
+                                                    <th class="info">相关操作</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>名称</td>
+                                                    <td>1000元</td>
+                                                    <td>yyyy-MM-dd</td>
+                                                    <td>期限</td>
+                                                    <td>30元</td>
+                                                    <td>1%</td>
+                                                    <td>参考下3</td>
+                                                    <!--<td th:if="${ufp.status==1}" th:text="持有中"></td>-->
+                                                    <!--<td th:if="${ufp.status==2}" th:text="已失效"></td>-->
+                                                    <!--<td th:if="${ufp.status==3}" th:text="已撤销"></td>-->
+                                                    <td>
+                                                        <button class="btn btn-danger btn-sm ufp_btn">
+															<span class="glyphicon glyphicon-remove"
+                                                                  aria-hidden="true"></span> 撤销
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div class="panel-body">
+                                            <h4>很抱歉！暂时还没有查询到您的基金理财信息</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!--End 页面主要内容-->
+    </div>
+</div>
+
+<!-- 引入jQuery和bootstrap的js -->
+<script th:src="@{/js/jquery.js}"></script>
+<script th:src="@{/bootstrap/js/bootstrap.js}"></script>
+<!--滚动条插件-->
+<script th:src="@{/lyear/js/perfect-scrollbar.min.js}"></script>
+<!--弹出框js-->
+<script th:src="@{/lyear/jconfirm/jquery-confirm.min.js}"></script>
+<!--自定义js脚本-->
+<script th:src="@{/lyear/js/main.min.js}"></script>
+<script type="text/javascript">
+
+
+</script>
+</body>
+</html>

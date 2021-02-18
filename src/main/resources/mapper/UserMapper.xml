@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxia.finance.mapper.UserMapper">
+
+  <resultMap id="UserMap" type="com.qianxia.finance.domain.User">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="ID_card" jdbcType="VARCHAR" property="IDCard" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="paypwd" jdbcType="INTEGER" property="paypwd" />
+    <result column="salt" jdbcType="CHAR" property="salt" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="reputation" jdbcType="VARCHAR" property="reputation" />
+    <collection property="roles" javaType="list" ofType="com.qianxia.finance.domain.Role">
+      <id column="id" property="id"/>
+      <result column="role" property="role" />
+      <result column="description" property="description" />
+    </collection>
+  </resultMap>
+
+  <sql id="UserList">
+    id, username, real_name, password, ID_card, phone, email, paypwd, salt, status, reputation
+  </sql>
+
+  <select id="queryUserByUsername" resultMap="UserMap">
+    SELECT username FROM t_user WHERE username = #{username}
+  </select>
+
+  <insert id="register">
+    INSERT INTO t_user(id,username,password,salt,status,reputation)
+    VALUES (#{id},#{username},#{password},#{salt},#{status},#{reputation})
+  </insert>
+
+</mapper>

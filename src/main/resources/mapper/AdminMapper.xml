@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxia.finance.mapper.AdminMapper">
+
+    <resultMap id="AdminMap" type="com.qianxia.finance.domain.Admin">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+        <result column="status" property="status"/>
+        <collection property="roles" javaType="list" ofType="com.qianxia.finance.domain.Role">
+            <id column="id" property="id"/>
+            <result column="role" property="role" />
+            <result column="description" property="description" />
+        </collection>
+    </resultMap>
+
+    <sql id="AdminList">
+        id,username,password,salt,status
+    </sql>
+
+    <select id="queryAdminByUsername" resultMap="AdminMap">
+        SELECT DISTINCT username FROM t_admin WHERE username = #{username}
+    </select>
+</mapper>
