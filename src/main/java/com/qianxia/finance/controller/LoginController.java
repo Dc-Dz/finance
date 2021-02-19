@@ -34,7 +34,7 @@ public class LoginController {
         return Result.error();
     }
 
-    @PostMapping("/register")
+    @GetMapping("/register")
     public @ResponseBody Result register(@RequestParam("username") String username, @RequestParam("password") String password){
         User user = new User();
         user.setId(SnowflakeIdWorkerUtil.getUuid());
@@ -48,5 +48,11 @@ public class LoginController {
         }else {
             return Result.error();
         }
+    }
+
+    @PostMapping("/toLogin")
+    public @ResponseBody Result login(@RequestParam("username") String username, @RequestParam("password") String password){
+
+        return Result.error();
     }
 }

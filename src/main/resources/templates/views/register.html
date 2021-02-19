@@ -222,11 +222,11 @@
                     "username":$.trim($("#username").val()),
                     "password":$.trim($("#password").val()),
                 },
-                type:"post",
+                type:"get",
                 success:function (result) {
                     if (result.code === 200){
                         var url = result.extend.url;
-                        alert(url);
+                        // alert(url);
                         location.href = url;
                     }else{
                         show_validate_msg("#password","error","密码错误")
