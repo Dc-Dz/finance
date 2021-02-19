@@ -22,6 +22,12 @@
     </sql>
 
     <select id="queryAdminByUsername" resultMap="AdminMap">
-        SELECT DISTINCT username FROM t_admin WHERE username = #{username}
+        SELECT DISTINCT <include refid="AdminList"/>
+        FROM t_admin
+        <where>
+            <if test="username != null and username != ''">
+                username = #{username}
+            </if>
+        </where>
     </select>
 </mapper>

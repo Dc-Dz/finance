@@ -120,7 +120,7 @@
 
         $("#captcha").blur(verifyCaptcha);
 
-        $("#login_btn").mousedown(login());
+        $("#login_btn").mousedown(login);
 
         $("body").keydown(function (event) {
             if (event.keyCode === 13){
@@ -160,7 +160,7 @@
         }
 
         if ("" === password){
-            show_validate_msg("#username","error","请输入密码");
+            show_validate_msg("#password","error","请输入密码");
             return false;
         }
 
@@ -183,7 +183,7 @@
                     alert(url);
                     location.href = url;
                 }else{
-                    show_validate_msg("#password","error","密码错误")
+                    $("#password").html(result.message);
                 }
             }
         })

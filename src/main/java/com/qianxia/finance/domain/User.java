@@ -6,7 +6,7 @@ import java.util.List;
  * 用户类
  */
 public class User {
-    private String id;  // 主键
+    private Integer id;  // 主键
 
     private String username;  // 用户名
 
@@ -30,11 +30,11 @@ public class User {
 
     private List<Role> roles;  // 角色集合
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

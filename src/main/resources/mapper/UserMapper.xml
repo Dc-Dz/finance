@@ -3,7 +3,7 @@
 <mapper namespace="com.qianxia.finance.mapper.UserMapper">
 
   <resultMap id="UserMap" type="com.qianxia.finance.domain.User">
-    <id column="id" jdbcType="CHAR" property="id" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -26,7 +26,7 @@
   </sql>
 
   <select id="queryUserByUsername" resultMap="UserMap">
-    SELECT username FROM t_user WHERE username = #{username}
+    SELECT DISTINCT <include refid="UserList"/> FROM t_user WHERE username = #{username}
   </select>
 
   <insert id="register">

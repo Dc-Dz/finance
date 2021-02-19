@@ -8,6 +8,7 @@ class FinanceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println(Long.MAX_VALUE);
 	}
 
 }
