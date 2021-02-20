@@ -4,6 +4,8 @@ import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.qianxia.finance.common.Constant;
 import com.qianxia.finance.domain.Admin;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy;
+import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -59,6 +61,16 @@ public class ShiroConfig {
         // 关联realm
         securityManager.setRealms(list);
 
+        // 设置多个realm认证策略
+        ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();
+
+        /**
+         *   多个realm的三种认证策略
+         * AtLeastOneSuccessfulStrategy :只要有一个realm认证成功，就算成功
+         * FirstSuccessfulStrategy ：第一个realm认证成功，就算成功
+         * AllSuccessfulStrategy ：所有的realm认证成功，才算成功
+         */
+        authenticator.setAuthenticationStrategy(new AtLeastOneSuccessfulStrategy());
         return securityManager;
     }
 
@@ -84,7 +96,7 @@ public class ShiroConfig {
         // 1.修改凭证校验匹配器
         HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
         // 2.设置加密算法
-        matcher.setHashAlgorithmName("MD5");;
+        matcher.setHashAlgorithmName("MD5");
         // 3.设置散列次数
         matcher.setHashIterations(Constant.MD5_HASH);
 
