@@ -11,4 +11,11 @@ public interface AdminMapper {
      * @return
      */
     List<Admin> queryAdminByUsername(String username);
+
+    /**
+     * 更改登录状态
+     * @param admin
+     * @return
+     */
+    Integer updateAdminStatus(Admin admin);
 }

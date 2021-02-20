@@ -30,4 +30,8 @@
             </if>
         </where>
     </select>
+
+    <update id="updateAdminStatus">
+        UPDATE t_admin SET status = #{status} WHERE id = #{id}
+    </update>
 </mapper>

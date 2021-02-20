@@ -29,4 +29,9 @@ public class AdminServiceImpl implements AdminService {
             return adminList.get(0);
         }
     }
+
+    @Override
+    public Integer updateAdminStatus(Admin admin) {
+        return adminMapper.updateAdminStatus(admin);
+    }
 }

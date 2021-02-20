@@ -9,4 +9,11 @@ public interface AdminService {
      * @return
      */
     Admin queryAdminByUsername(String username);
+
+    /**
+     * 更改登录状态
+     * @param admin
+     * @return
+     */
+    Integer updateAdminStatus(Admin admin);
 }

@@ -43,9 +43,13 @@ public class UserRealm extends AuthorizingRealm{
         if (null != user){
             Subject subject = SecurityUtils.getSubject();
             Session session = subject.getSession();
-            session.setAttribute("loginUser","user");
-            System.out.println(user.getUsername() + "登录了系统");
-            return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), ByteSource.Util.bytes(user.getSalt()),"");
+            user.setStatus(1);
+            Integer result = userService.updateUserStatus(user);
+            if (result == 1){
+                session.setAttribute("loginUser","user");
+                System.out.println(user.getUsername() + "登录了系统");
+                return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), ByteSource.Util.bytes(user.getSalt()),"");
+            }
         }
 
         return null;

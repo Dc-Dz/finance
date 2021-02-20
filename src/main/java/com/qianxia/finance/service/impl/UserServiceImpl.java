@@ -45,4 +45,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword(md5Hash.toHex());
         return userMapper.register(user);
     }
+
+    @Override
+    public Integer updateUserStatus(User user) {
+        return userMapper.updateUserStatus(user);
+    }
 }

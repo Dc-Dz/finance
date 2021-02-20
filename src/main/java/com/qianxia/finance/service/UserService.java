@@ -16,4 +16,11 @@ public interface UserService {
      * @return
      */
     Integer register(User user);
+
+    /**
+     * 修改登录状态
+     * @param user
+     * @return
+     */
+    Integer updateUserStatus(User user);
 }
