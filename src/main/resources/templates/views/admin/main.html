@@ -12,7 +12,7 @@
     <!--弹出框样式-->
     <link th:href="@{/lyear/jconfirm/jquery-confirm.min.css}" rel="stylesheet" type="text/css"/>
     <!--自定义样式-->
-    <link href="../lyear/css/style.min.css" th:href="@{/lyear/css/style.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/lyear/css/style.min.css}" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
@@ -48,13 +48,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>zhangsan</td>
-                                            <td>未填写</td>
-                                            <td>未填写</td>
-                                            <td>未填写</td>
-                                            <td>离线</td>
+                                        <tr th:each="user:${userList}">
+                                            <td th:text="${user.id}"></td>
+                                            <td th:text="${user.username}"></td>
+                                            <td th:text="${user.realName} == null ? '未填写' : ${user.realName}"></td>
+                                            <td th:text="${user.phone} == null ? '未填写' : ${user.phone}"></td>
+                                            <td th:text="${user.email} == null ? '未填写' : ${user.email}"></td>
+                                            <td th:if="${user.status == 1}" th:text="在线"></td>
+                                            <td th:if="${user.status == 0}" th:text="离线"></td>
                                             <td>
                                                 <button class="btn btn-danger btn-sm edit_btn">
 															<span class="glyphicon glyphicon-log-out"

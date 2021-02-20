@@ -9,6 +9,7 @@ import com.qianxia.finance.utils.SaltUtil;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -60,5 +61,24 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Permissions> queryPermissionsByRoleId(Integer id) {
         return userMapper.queryPermissionsByRoleId(id);
+    }
+
+    @Override
+    public List<User> queryUserAll() {
+        return userMapper.queryUserAll();
+    }
+
+    @Transactional
+    @Override
+    public User queryAdminById(Integer id) {
+
+        User user = userMapper.queryAdminById(id);
+        user.setStatus(0);
+        Integer result = userMapper.updateUserStatus(user);
+        if (result == 1){
+            return user;
+        }
+
+        return null;
     }
 }

@@ -41,4 +41,17 @@ public interface UserService {
      * @return
      */
     List<Permissions> queryPermissionsByRoleId(Integer id);
+
+    /**
+     * 查询所有用户
+     * @return
+     */
+    List<User> queryUserAll();
+
+    /**
+     * 根据id查单条
+     * @param id
+     * @return
+     */
+    User queryAdminById(Integer id);
 }

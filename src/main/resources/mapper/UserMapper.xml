@@ -64,4 +64,12 @@
     r.id = #{id}
   </select>
 
+  <select id="queryUserAll" resultMap="UserMap">
+    SELECT <include refid="UserList"/> FROM t_user
+  </select>
+
+  <select id="queryAdminById" resultMap="UserMap">
+    SELECT <include refid="UserList"/> FROM t_user WHERE id = #{id}
+  </select>
+
 </mapper>

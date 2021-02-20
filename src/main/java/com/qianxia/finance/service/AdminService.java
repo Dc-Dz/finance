@@ -33,4 +33,11 @@ public interface AdminService {
      * @return
      */
     List<Permissions> queryPermissionsByRoleId(Integer id);
+
+    /**
+     * 根据id查单条
+     * @param id
+     * @return
+     */
+    Admin queryAdminById(Integer id);
 }

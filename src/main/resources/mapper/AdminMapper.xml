@@ -61,4 +61,8 @@
         WHERE
             r.id = #{id}
     </select>
+
+    <select id="queryAdminById" resultMap="AdminMap">
+        SELECT <include refid="AdminList"/> FROM t_admin WHERE id = #{id}
+    </select>
 </mapper>
