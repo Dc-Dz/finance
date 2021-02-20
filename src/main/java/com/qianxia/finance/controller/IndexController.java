@@ -77,6 +77,8 @@ public class IndexController {
         if ("adminLogout".equalsIgnoreCase(logout)){
             Admin loginAdmin = (Admin) session.getAttribute("loginAdmin");
             Admin admin = adminService.queryAdminById(loginAdmin.getId());
+            admin.setStatus(0);
+            adminService.updateAdminStatus(admin);
             session.removeAttribute("loginAdmin");
             System.out.println("logout=>" + admin.getUsername() + "退出了系统");
             return "login";
@@ -99,7 +101,7 @@ public class IndexController {
             userService.updateUserStatus(user);
             session.removeAttribute("loginUser");
             System.out.println("logout=>" + user.getUsername() + "退出了系统");
-            return "login";
+            return "/";
         }
         return "login";
     }

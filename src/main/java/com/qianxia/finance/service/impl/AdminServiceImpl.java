@@ -20,14 +20,14 @@ public class AdminServiceImpl implements AdminService {
     public Admin queryAdminByUsername(String username) {
 
         Admin admin = new Admin();
-        if (!username.equalsIgnoreCase(admin.getUsername())){
+        if (!username.equalsIgnoreCase(admin.getUsername())) {
             admin.setUsername(username);
         }
 
         List<Admin> adminList = adminMapper.queryAdminByUsername(username);
-        if ("[]".equalsIgnoreCase(adminList.toString())){
+        if ("[]".equalsIgnoreCase(adminList.toString())) {
             return null;
-        }else {
+        } else {
             return adminList.get(0);
         }
     }
@@ -52,13 +52,8 @@ public class AdminServiceImpl implements AdminService {
     public Admin queryAdminById(Integer id) {
 
         Admin admin = adminMapper.queryAdminById(id);
-        admin.setStatus(0);
-        Integer result = adminMapper.updateAdminStatus(admin);
-        if (result == 1){
-            return admin;
-        }else {
-            return null;
-        }
+
+        return admin;
 
     }
 }

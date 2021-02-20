@@ -37,14 +37,14 @@ public class UserController {
     }
 
     @PutMapping("/user/updateUserProfile/{userId}")
-    public @ResponseBody Result updateUserProfile(@PathVariable("userId") Integer userId, User user, HttpSession session){
-        user.setId(userId);
+    public @ResponseBody Result updateUserProfile(@PathVariable("userId") Integer id, User user, HttpSession session){
+        user.setId(id);
         Integer result = userService.updateUser(user);
         if(result == 1){
             // 当前登录用户信息改变时，session中存储的用户信息也要发生改变
             User loginUser = (User) session.getAttribute("loginUser");
-            if (null != loginUser && userId == loginUser.getId()){
-               session.setAttribute("loginUser",userService.queryUserById(userId));
+            if (null != loginUser && id == loginUser.getId()){
+               session.setAttribute("loginUser",userService.queryUserById(id));
             }
             return Result.success();
         }

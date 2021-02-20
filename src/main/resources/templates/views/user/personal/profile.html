@@ -209,9 +209,6 @@
             success: function (result) {
                 if (result.code === 200) {
                     $.alert("个人信息修改成功");
-                    // setTimeout(function () {
-                    //     location.href = "/user/index.html";
-                    // }, 1000)
                     location.href = "/user/personal/toPersonal.html";
                 } else {
                     $.alert("个人信息修改失败");
