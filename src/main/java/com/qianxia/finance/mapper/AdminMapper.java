@@ -1,6 +1,7 @@
 package com.qianxia.finance.mapper;
 
 import com.qianxia.finance.domain.Admin;
+import com.qianxia.finance.domain.Permissions;
 
 import java.util.List;
 
@@ -18,4 +19,18 @@ public interface AdminMapper {
      * @return
      */
     Integer updateAdminStatus(Admin admin);
+
+    /**
+     * 根据用户名查询角色
+     * @param username
+     * @return
+     */
+    Admin queryRoleByRoles(String username);
+
+    /**
+     * 根据角色id
+     * @param id
+     * @return
+     */
+    List<Permissions> queryPermissionsByRoleId(Integer id);
 }

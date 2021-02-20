@@ -1,6 +1,7 @@
 package com.qianxia.finance.service.impl;
 
 import com.qianxia.finance.domain.Admin;
+import com.qianxia.finance.domain.Permissions;
 import com.qianxia.finance.mapper.AdminMapper;
 import com.qianxia.finance.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,15 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Integer updateAdminStatus(Admin admin) {
         return adminMapper.updateAdminStatus(admin);
+    }
+
+    @Override
+    public Admin queryRoleByRoles(String username) {
+        return adminMapper.queryRoleByRoles(username);
+    }
+
+    @Override
+    public List<Permissions> queryPermissionsByRoleId(Integer id) {
+        return adminMapper.queryPermissionsByRoleId(id);
     }
 }
