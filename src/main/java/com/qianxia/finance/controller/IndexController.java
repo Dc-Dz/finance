@@ -3,8 +3,10 @@ package com.qianxia.finance.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qianxia.finance.domain.Admin;
+import com.qianxia.finance.domain.News;
 import com.qianxia.finance.domain.User;
 import com.qianxia.finance.service.AdminService;
+import com.qianxia.finance.service.NewsService;
 import com.qianxia.finance.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class IndexController {
     private AdminService adminService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private NewsService newsService;
 
     /**
      * 管理员首页
@@ -53,6 +57,11 @@ public class IndexController {
      */
     @GetMapping("/user/index.html")
     public String toUserIndex(Model model){
+
+        List<News> list = newsService.queryNewsAll();
+
+        model.addAttribute("newsList",list);
+        model.addAttribute("pageTopBarInfo","系统首页");
 
         return "user/main";
     }

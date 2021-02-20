@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxia.finance.mapper.NewsMapper">
+
+    <resultMap id="NewsMap" type="com.qianxia.finance.domain.News">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="newsDesc" property="newsDesc"/>
+        <result column="createTime" property="createTime"/>
+    </resultMap>
+
+    <sql id="NewsList">
+        id,title,newsDesc,createTime
+    </sql>
+
+    <select id="queryNewsAll" resultMap="NewsMap">
+        SELECT <include refid="NewsList"/> FROM t_news
+    </select>
+
+</mapper>
