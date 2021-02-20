@@ -197,15 +197,16 @@
     function updateUser() {
         var userId = [[${session.loginUser.id}]];
         $.ajax({
-           url:"/user/updateUserProfile" + userId,
+           url:"/user/updateUserProfile/" + userId,
            data:$("#profileForm").serialize(),
            type:"put",
            success:function (result) {
                if (result.code === 200){
                    $.alert("个人信息修改成功");
-                    var url = result.extend.url;
-                    alert(url);
-                    location.href = url;
+                   setTimeout(function () {
+                       location.href = "/user/index.html";
+                   },1000)
+
                }else {
                    $.alert("个人信息修改失败");
                }

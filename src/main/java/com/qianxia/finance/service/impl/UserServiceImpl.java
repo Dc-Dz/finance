@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -68,17 +69,16 @@ public class UserServiceImpl implements UserService {
         return userMapper.queryUserAll();
     }
 
-    @Transactional
     @Override
     public User queryUserById(Integer id) {
 
         User user = userMapper.queryUserById(id);
-        user.setStatus(0);
-        Integer result = userMapper.updateUserStatus(user);
-        if (result == 1){
-            return user;
-        }
 
-        return null;
+        return user;
+    }
+
+    @Override
+    public Integer updateUser(User user) {
+        return userMapper.updateUser(user);
     }
 }

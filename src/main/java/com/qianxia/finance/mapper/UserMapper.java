@@ -54,4 +54,11 @@ public interface UserMapper {
      * @return
      */
     User queryUserById(Integer id);
+
+    /**
+     * 修改个人信息(用户)
+     * @param user
+     * @return
+     */
+    Integer updateUser(User user);
 }

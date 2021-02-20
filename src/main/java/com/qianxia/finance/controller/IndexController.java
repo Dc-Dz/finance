@@ -95,6 +95,8 @@ public class IndexController {
         if ("userLogout".equalsIgnoreCase(logout)){
             User loginUser = (User) session.getAttribute("loginUser");
             User user = userService.queryUserById(loginUser.getId());
+            user.setStatus(0);
+            userService.updateUserStatus(user);
             session.removeAttribute("loginUser");
             System.out.println("logout=>" + user.getUsername() + "退出了系统");
             return "login";

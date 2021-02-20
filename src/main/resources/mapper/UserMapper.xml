@@ -72,4 +72,14 @@
     SELECT <include refid="UserList"/> FROM t_user WHERE id = #{id}
   </select>
 
+  <update id="updateUser">
+    UPDATE t_user SET
+      real_name = #{realname},
+      ID_card = #{idcard},
+      phone = #{phone},
+      email = #{email},
+      paypwd = #{paypwd}
+    WHERE id = #{id}
+  </update>
+
 </mapper>

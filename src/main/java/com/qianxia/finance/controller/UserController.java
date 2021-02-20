@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,16 +37,16 @@ public class UserController {
     }
 
     @PutMapping("/user/updateUserProfile/{userId}")
-    public Result updateUserProfile(@PathVariable("userId") Integer userId,User user,HttpSession session){
+    public @ResponseBody Result updateUserProfile(@PathVariable("userId") Integer userId, User user, HttpSession session){
         user.setId(userId);
-        Integer result = userService.updateUserStatus(user);
+        Integer result = userService.updateUser(user);
         if(result == 1){
             // 当前登录用户信息改变时，session中存储的用户信息也要发生改变
             User loginUser = (User) session.getAttribute("loginUser");
             if (null != loginUser && userId == loginUser.getId()){
                session.setAttribute("loginUser",userService.queryUserById(userId));
             }
-            return Result.success().add("url","/user/index.html");
+            return Result.success();
         }
         return Result.error();
     }
