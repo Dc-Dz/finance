@@ -74,8 +74,8 @@
 
   <update id="updateUser">
     UPDATE t_user SET
-      real_name = #{realname},
-      ID_card = #{idcard},
+      real_name = #{realName},
+      ID_card = #{IDCard},
       phone = #{phone},
       email = #{email},
       paypwd = #{paypwd}
