@@ -1,6 +1,7 @@
 package com.qianxia.finance.service.impl;
 
 import com.qianxia.finance.common.Constant;
+import com.qianxia.finance.domain.Permissions;
 import com.qianxia.finance.domain.User;
 import com.qianxia.finance.mapper.UserMapper;
 import com.qianxia.finance.service.UserService;
@@ -49,5 +50,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer updateUserStatus(User user) {
         return userMapper.updateUserStatus(user);
+    }
+
+    @Override
+    public User queryRoleByRoles(String username) {
+        return userMapper.queryRoleByRoles(username);
+    }
+
+    @Override
+    public List<Permissions> queryPermissionsByRoleId(Integer id) {
+        return userMapper.queryPermissionsByRoleId(id);
     }
 }

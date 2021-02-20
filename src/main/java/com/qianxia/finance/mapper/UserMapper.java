@@ -1,5 +1,6 @@
 package com.qianxia.finance.mapper;
 
+import com.qianxia.finance.domain.Permissions;
 import com.qianxia.finance.domain.User;
 
 import java.util.List;
@@ -26,4 +27,18 @@ public interface UserMapper {
      * @return
      */
     Integer updateUserStatus(User user);
+
+    /**
+     * 根据用户名查询角色
+     * @param username
+     * @return
+     */
+    User queryRoleByRoles(String username);
+
+    /**
+     * 根据角色id
+     * @param id
+     * @return
+     */
+    List<Permissions> queryPermissionsByRoleId(Integer id);
 }

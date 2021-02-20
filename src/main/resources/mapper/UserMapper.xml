@@ -38,4 +38,30 @@
     UPDATE t_user SET status = #{status} WHERE id = #{id}
   </update>
 
+  <select id="queryRoleByRoles" resultMap="UserMap">
+    SELECT
+      u.id,
+      u.username,
+      ur.role_id,
+      r.role
+    FROM
+      t_user u
+    JOIN t_user_role ur ON a.id = ur.user_id
+    JOIN t_role r ON ur.role_id = r.id
+    WHERE u.username = #{username}
+  </select>
+
+  <select id="queryPermissionsByRoleId" resultMap="UserMap">
+    SELECT
+      r.role,
+      p.id,
+      p.permissions
+    FROM
+      t_role r
+    JOIN t_role_permission rp ON r.id = rp.role_id
+    JOIN t_permissions p ON p.id = rp.permission_id
+    WHERE
+    r.id = #{id}
+  </select>
+
 </mapper>
