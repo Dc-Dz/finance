@@ -68,7 +68,7 @@
     SELECT <include refid="UserList"/> FROM t_user
   </select>
 
-  <select id="queryAdminById" resultMap="UserMap">
+  <select id="queryUserById" resultMap="UserMap">
     SELECT <include refid="UserList"/> FROM t_user WHERE id = #{id}
   </select>
 

@@ -12,7 +12,7 @@
     <!--弹出框样式-->
     <link th:href="@{/lyear/jconfirm/jquery-confirm.min.css}" rel="stylesheet" type="text/css"/>
     <!--自定义样式-->
-    <link href="../lyear/css/style.min.css" th:href="@{/lyear/css/style.min.css}" rel="stylesheet" type="text/css"/>
+    <link  th:href="@{/lyear/css/style.min.css}" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
@@ -38,36 +38,37 @@
                                         <label>用户名</label>
                                         <input type="text"
                                                class="form-control" name="username" id="username"
+                                               th:value="${user.username}"
                                                disabled="disabled"/>
                                     </div>
                                     <div class="form-group">
                                         <label>真实姓名</label>
                                         <input type="text" class="form-control" name="realname"
-                                               id="realname" placeholder="您的真实姓名还未填写">
+                                               id="realname" th:value="${user.realName}" placeholder="您的真实姓名还未填写">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">
                                         <label>身份证号</label>
                                         <input type="text" class="form-control" name="idcard"
-                                               id="idcard" placeholder="您的身份证号码还未填写">
+                                               id="idcard" th:value="${user.IDCard}" placeholder="您的身份证号码还未填写">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">
                                         <label>交易密码</label>
                                         <input type="email" class="form-control" name="paypwd"
-                                               id="paypwd" placeholder="您的交易密码（6位数字）还未设置">
+                                               id="paypwd" th:value="${user.paypwd}" placeholder="您的交易密码（6位数字）还未设置">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">
                                         <label>手机号</label>
                                         <input type="text" class="form-control" name="phone"
-                                               id="phone" placeholder="您的手机号还未填写">
+                                               id="phone" th:value="${user.phone}" placeholder="您的手机号还未填写">
                                         <span class="help-block"></span>
                                     </div>
                                     <div class="form-group">
                                         <label>电子邮箱</label>
                                         <input type="email" class="form-control" name="email"
-                                               id="email" placeholder="您的邮箱地址还未填写">
+                                               id="email" th:value="${user.email}" placeholder="您的邮箱地址还未填写">
                                         <span class="help-block"></span>
                                     </div>
                                     <button id="updateUserBtn" type="button"

@@ -53,5 +53,5 @@ public interface UserService {
      * @param id
      * @return
      */
-    User queryAdminById(Integer id);
+    User queryUserById(Integer id);
 }

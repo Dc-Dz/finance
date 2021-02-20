@@ -94,7 +94,7 @@ public class IndexController {
     public String toUserLogout(@RequestParam("logout") String logout, HttpSession session){
         if ("userLogout".equalsIgnoreCase(logout)){
             User loginUser = (User) session.getAttribute("loginUser");
-            User user = userService.queryAdminById(loginUser.getId());
+            User user = userService.queryUserById(loginUser.getId());
             session.removeAttribute("loginUser");
             System.out.println("logout=>" + user.getUsername() + "退出了系统");
             return "login";

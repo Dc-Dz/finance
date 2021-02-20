@@ -70,9 +70,9 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public User queryAdminById(Integer id) {
+    public User queryUserById(Integer id) {
 
-        User user = userMapper.queryAdminById(id);
+        User user = userMapper.queryUserById(id);
         user.setStatus(0);
         Integer result = userMapper.updateUserStatus(user);
         if (result == 1){
