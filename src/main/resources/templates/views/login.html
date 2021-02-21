@@ -16,12 +16,14 @@
         .lear-wrapper {
             position: relative;
         }
+
         .lear-login {
             display: flex !important;
             min-height: 100vh;
             align-items: center !important;
             justify-content: center !important;
         }
+
         .login-center1 {
             background: #fff;
             min-width: 38.25rem;
@@ -29,13 +31,16 @@
             border-radius: 5px;
             margin: 2.85714em 0;
         }
+
         .login-header {
             margin-bottom: 1.5rem !important;
         }
+
         .login-center .has-feedback.feedback-left .form-control {
             padding-left: 38px;
             padding-right: 12px;
         }
+
         .login-center .has-feedback.feedback-left .form-control-feedback {
             left: 0;
             right: auto;
@@ -45,6 +50,7 @@
             z-index: 4;
             color: #dcdcdc;
         }
+
         .login-center .has-feedback.feedback-left.row .form-control-feedback {
             left: 15px;
         }
@@ -118,15 +124,20 @@
             drawPic(show_num);
         });
 
-        $("#captcha").blur(verifyCaptcha);
-
-        $("#login_btn").mousedown(login);
-
-        $("body").keydown(function (event) {
-            if (event.keyCode === 13){
+        $("#login_btn").click(function () {
+            if (verifyCaptcha()) {
                 login();
             }
         })
+
+        $("body").keydown(function (event) {
+            if (event.keyCode === 13) {
+                if (verifyCaptcha()){
+                    login();
+                }
+            }
+        })
+
     });
 
     // 校验验证码
@@ -134,15 +145,15 @@
         var captcha_num = $.trim($("#captcha").val().toLowerCase());
         var real_num = show_num.join("");
         $("#captcha_note_child").text("");
-        if ("" === real_num ){
+        if ("" === real_num) {
             $("#captcha_note_parent").addClass("has-error");
             $("#captcha_note_child").text("验证码为空");
             return false;
-        }else if(real_num === captcha_num) {
+        } else if (real_num === captcha_num) {
             $("#captcha_note_parent").addClass("has-success");
             $("#captcha_note_child").text("验证码正确");
             return true;
-        }else{
+        } else {
             $("#captcha_note_parent").addClass("has-error");
             $("#captcha_note_child").text("验证码错误");
             return false;
@@ -150,39 +161,39 @@
     }
 
     // 登录认证
-    function login(){
+    function login() {
         var username = $.trim($("#username").val());
         var password = $.trim($("#password").val());
 
-        if ("" === username){
-            show_validate_msg("#username","error","请输入用户名");
+        if ("" === username) {
+            show_validate_msg("#username", "error", "请输入用户名");
             return false;
         }
 
-        if ("" === password){
-            show_validate_msg("#password","error","请输入密码");
+        if ("" === password) {
+            show_validate_msg("#password", "error", "请输入密码");
             return false;
         }
 
-        if ("" === $.trim($("#captcha").val())){
+        if ("" === $.trim($("#captcha").val())) {
             $("#captcha_note_parent").addClass("has-error");
             $("#captcha_note_child").text("请输入验证码");
             return false;
         }
 
         $.ajax({
-            url:"/login/toLogin",
-            data:{
-                "username":username,
-                "password":password
+            url: "/login/toLogin",
+            data: {
+                "username": username,
+                "password": password
             },
-            type:"post",
-            success:function (result) {
-                if (result.code === 200){
+            type: "post",
+            success: function (result) {
+                if (result.code === 200) {
                     var url = result.extend.url;
                     // alert(url);
                     location.href = url;
-                }else{
+                } else {
                     $("#password").html(result.message);
                 }
             }
