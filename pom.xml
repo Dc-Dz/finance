@@ -73,10 +73,10 @@
             <version>1.5.3</version>
         </dependency>
         <!--SpringBoot集成Redis的依赖-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-data-redis</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
         <!--&lt;!&ndash;SpringSession依赖&ndash;&gt;-->
         <!--<dependency>-->
         <!--<groupId>org.springframework.session</groupId>-->

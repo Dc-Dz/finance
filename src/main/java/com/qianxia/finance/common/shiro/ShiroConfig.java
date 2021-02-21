@@ -79,6 +79,20 @@ public class ShiroConfig {
     public AdminRealm adminRealm(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher hashedCredentialsMatcher){
         AdminRealm adminRealm = new AdminRealm();
         adminRealm.setCredentialsMatcher(hashedCredentialsMatcher);
+
+        // 开启全局缓存
+        adminRealm.setCachingEnabled(true);
+        // 开启认证缓存
+        adminRealm.setAuthenticationCachingEnabled(true);
+        // 认证认证缓存
+        adminRealm.setAuthenticationCacheName("authentication");
+        // 开启授权缓存
+        adminRealm.setAuthorizationCachingEnabled(true);
+        // 认证授权缓存
+        adminRealm.setAuthorizationCacheName("authorization");
+        // 开启缓存管理
+        adminRealm.setCacheManager(new RedisCacheManager());
+
         return adminRealm;
     }
 
@@ -87,6 +101,20 @@ public class ShiroConfig {
     public UserRealm userRealm(@Qualifier("hashedCredentialsMatcher") HashedCredentialsMatcher hashedCredentialsMatcher){
         UserRealm userRealm = new UserRealm();
         userRealm.setCredentialsMatcher(hashedCredentialsMatcher);
+
+        // 开启全局缓存
+        userRealm.setCachingEnabled(true);
+        // 开启认证缓存
+        userRealm.setAuthenticationCachingEnabled(true);
+        // 认证认证缓存
+        userRealm.setAuthenticationCacheName("authentication");
+        // 开启授权缓存
+        userRealm.setAuthorizationCachingEnabled(true);
+        // 认证授权缓存
+        userRealm.setAuthorizationCacheName("authorization");
+        // 开启缓存管理
+        userRealm.setCacheManager(new RedisCacheManager());
+
         return userRealm;
     }
 
