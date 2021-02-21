@@ -57,7 +57,8 @@
                                             <td th:if="${user.status == 1}" th:text="在线"></td>
                                             <td th:if="${user.status == 0}" th:text="离线"></td>
                                             <td>
-                                                <button class="btn btn-danger btn-sm edit_btn">
+                                                <button id="editBtn" class="btn btn-danger btn-sm edit_btn"
+                                                    th:attr="edit-id=${user.id},edit-username=${user.username},edit-status=${user.status}">
 															<span class="glyphicon glyphicon-log-out"
                                                                   aria-hidden="true"></span> 强制下线
                                                 </button>
@@ -163,6 +164,50 @@
 <!--自定义js脚本-->
 <script th:src="@{/lyear/js/main.min.js}"></script>
 <script type="text/javascript">
+
+    // 强制下线
+    $(function () {
+        $("#editBtn").click(function () {
+            var id = $(this).attr("edit-id");
+            var username = $(this).attr("edit-username");
+            var status = $(this).attr("edit-status");
+            if (status === 0){
+                $.alert("用户 <strong>" + username + "</strong> 已离线");
+            }else if (status === 1){
+                $.alert({
+                    title:'提示：',
+                    content:"确定让 <strong>" + username + "</strong> 强制下线吗?",
+                    buttons:{
+                        confirm:{
+                            text:'确定',
+                            btnClass:'btn-primary',
+                            action:function () {
+                                $.ajax({
+                                    url:"/user/updateUserStatus/" + id,
+                                    type:"put",
+                                    success:function (result) {
+                                        if (result.code === 200){
+                                            var pageNum = [[${userPageInfo.pageNum}]];
+                                            var pageSize = [[${userPageInfo.pageSize}]];
+                                            location.href = "/admin/index.html?pageNum=" + pageNum + "&pageSize=" + pageSize;
+                                        }else{
+                                            $.alert('用户强制下线操作失败!');
+                                        }
+                                    }
+                                });
+                            }
+                        },
+                        cancel:{
+                            text:'取消',
+                            action:function () {
+                                $.alert("已取消!");
+                            }
+                        }
+                    }
+                });
+            }
+        })
+    })
 
 </script>
 </body>

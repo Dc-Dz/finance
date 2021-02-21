@@ -36,6 +36,13 @@ public class UserController {
         return "user/personal/profile";
     }
 
+    /**
+     * 更新用户信息(用户自己更改)
+     * @param id
+     * @param user
+     * @param session
+     * @return
+     */
     @PutMapping("/user/updateUserProfile/{userId}")
     public @ResponseBody Result updateUserProfile(@PathVariable("userId") Integer id, User user, HttpSession session){
         user.setId(id);
@@ -46,6 +53,25 @@ public class UserController {
             if (null != loginUser && id == loginUser.getId()){
                session.setAttribute("loginUser",userService.queryUserById(id));
             }
+            return Result.success();
+        }
+        return Result.error();
+    }
+
+    /**
+     * 用户强制下线(管理员更改用户信息)
+     * @param id
+     * @param session
+     * @return
+     */
+    @PutMapping("/user/updateUserStatus/{id}")
+    public @ResponseBody Result updateUserStatus(@PathVariable("id") Integer id,HttpSession session){
+        User user = userService.queryUserById(id);
+        user.setStatus(0);
+        Integer result = userService.updateUserStatus(user);
+        if (result == 1){
+            // 当前登录用户强制下线
+            session.removeAttribute("loginUser");
             return Result.success();
         }
         return Result.error();

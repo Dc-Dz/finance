@@ -17,32 +17,32 @@
             <ul class="nav nav-drawer">
                 <li class="nav-item"><a th:href="@{/user/index.html}"><i
                         class="mdi mdi-home"></i>系统首页</a></li>
-                <li class="nav-item nav-item-has-subnav">
+                <li shiro:hasPermissions="user:finance" class="nav-item nav-item-has-subnav">
                     <a href="javascript:void(0)"><i class="mdi mdi-square-inc-cash"></i>
                         个人理财</a>
                     <ul class="nav nav-subnav">
-                        <li>
+                        <li shiro:hasPermission="user:changeMoney">
                             <a>零钱理财</a>
                         </li>
-                        <li>
+                        <li shiro:hasPermission="user:payMoney">
                             <a>工资理财</a>
                         </li>
-                        <li>
+                        <li shiro:hasPermission="user:termFinancial">
                             <a>期限理财</a>
                         </li>
-                        <li>
+                        <li shiro:hasPermission="user:fundProduct">
                             <a>基金理财</a>
                         </li>
-                        <li>
+                        <li shiro:hasPermission="user:bank">
                             <a>银行推荐</a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item nav-item-has-subnav"
+                <li shiro:hasPermission="user"tools class="nav-item nav-item-has-subnav"
                 ><a href="javascript:void(0)"><i class="mdi mdi-wrench"></i>金融工具</a>
                     <ul class="nav nav-subnav">
-                        <li><a>资金记录</a></li>
-                        <li><a>安全网贷</a></li>
+                        <li shiro:hasPermission="user:record"><a>资金记录</a></li>
+                        <li shiro:hasPermission="user:loan"><a>安全网贷</a></li>
                     </ul>
                 </li>
                 <li class="nav-item nav-item-has-subnav"
