@@ -4,13 +4,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <title>404界面</title>
+    <title>500界面</title>
     <!-- 引入bootstrap样式 -->
     <link th:href="@{/bootstrap/css/bootstrap.css}" rel="stylesheet" type="text/css">
     <!--图标库-->
     <link th:href="@{/lyear/css/materialdesignicons.min.css}" rel="stylesheet" type="text/css"/>
     <!--自定义样式-->
-    <link href="../lyear/css/style.min.css" th:href="@{/lyear/css/style.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/lyear/css/style.min.css}" rel="stylesheet" type="text/css"/>
     <style>
         body {
             background-color: #fff;
@@ -43,7 +43,7 @@
 <section class="error-page">
     <div class="error-box">
         <div class="error-body text-center">
-            <h1>404</h1>
+            <h1>500</h1>
             <h4>很抱歉，但是那个页面看起来已经不存在了。</h4>
             <a th:href="@{/toindex.html}"
                class="btn btn-primary ">返回首页</a>

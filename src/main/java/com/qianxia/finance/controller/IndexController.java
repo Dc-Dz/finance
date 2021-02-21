@@ -101,7 +101,7 @@ public class IndexController {
             userService.updateUserStatus(user);
             session.removeAttribute("loginUser");
             System.out.println("logout=>" + user.getUsername() + "退出了系统");
-            return "/";
+            return "login";
         }
         return "login";
     }
