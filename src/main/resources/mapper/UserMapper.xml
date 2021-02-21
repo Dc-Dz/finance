@@ -30,8 +30,8 @@
   </select>
 
   <insert id="register">
-    INSERT INTO t_user(id,username,password,salt,status,reputation)
-    VALUES (#{id},#{username},#{password},#{salt},#{status},#{reputation})
+    INSERT INTO t_user(username,password,salt,status,reputation)
+    VALUES (#{username},#{password},#{salt},#{status},#{reputation})
   </insert>
 
   <update id="updateUserStatus">

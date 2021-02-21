@@ -77,7 +77,7 @@
                                             <span>页次：</span>
                                         </button>
                                         <button class="btn btn-default">
-                                            <span>1/页</span>
+                                            <span th:text="${userPageInfo.pageNum} + '/' + ${userPageInfo.pages} + '页'"></span>
                                         </button>
                                         <button class="btn btn-default">
                                             <span>每页显示：</span>
@@ -86,11 +86,12 @@
                                             <button id="btnGroupDrop1"
                                                     class="btn btn-default dropdown-toggle"
                                                     data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false"><span>5</span>
+                                                    aria-expanded="false"><span th:text="${userPageInfo.pageSize}"></span>
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li><a></a>
+                                                <li th:each="i:${#numbers.sequence(1,10)}">
+                                                    <a th:text="${i}" th:href="@{/admin/index.html(pageNum=${userPageInfo.pageNum},pageSize=${i})}"></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -101,7 +102,7 @@
                                             <span>总记录数：</span>
                                         </button>
                                         <button class="btn btn-default">
-                                            <span>5条</span>
+                                            <span th:text="${userPageInfo.total} + '条'"></span>
                                         </button>
                                     </div>
                                 </div>
@@ -112,21 +113,30 @@
                                         <ul class="pagination pagination-lg pull-right"
                                             style="margin-top: 0">
                                             <li>
-                                                <a>首页</a>
+                                                <a th:href="@{/admin/index.html(pageNum=1,pageSize=${userPageInfo.pageSize})}">首页</a>
                                             </li>
 
-                                            <li><a aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+                                            <li th:if="${userPageInfo.hasPreviousPage}"><a
+                                                    th:href="@{/admin/index.html(pageNum=${userPageInfo.pageNum},pageSize=${userPageInfo.pageSize})}"
+                                                    aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+                                            </a></li>
+
+                                            <li th:each="page_num:${userPageInfo.navigatepageNums}">
+                                                <a th:if="${page_num == userPageInfo.pageNum}"
+                                                    th:text="${page_num}"
+                                                    th:href="@{#}"></a>
+                                                <a th:text="${page_num}"
+                                                    th:if="${page_num != userPageInfo.pageNum}"
+                                                    th:href="@{/admin/index.html(pageNun=${page_num},pageSize=${userPageInfo.pageSize})}"></a>
+                                            </li>
+
+                                            <li th:if="${userPageInfo.hasNextPage}"><a
+                                                    th:href="@{/admin/index.html(pageNum=${userPageInfo.pageNum}+1,pageSize=${userPageInfo.pageSize})}"
+                                                    aria-label="Next"> <span aria-hidden="true">&raquo;</span>
                                             </a></li>
 
                                             <li>
-                                                <a></a>
-                                                <a></a>
-                                            </li>
-
-                                            <li><a aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-                                            </a></li>
-
-                                            <li><a>末页</a>
+                                                <a th:href="@{/admin/index.html(pageNum=${userPageInfo.pageNum},pageSize=${userPageInfo.pageSize})}">末页</a>
                                             </li>
                                         </ul>
                                     </nav>
