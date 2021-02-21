@@ -1,11 +1,15 @@
 package com.qianxia.finance.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 用户类
  */
-public class User {
+public class User implements Serializable{
+
+    private static final long serialVersionUID = -1477313142479404093L;
+
     private Integer id;  // 主键
 
     private String username;  // 用户名

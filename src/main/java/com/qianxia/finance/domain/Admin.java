@@ -1,11 +1,14 @@
 package com.qianxia.finance.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 管理员类
  */
-public class Admin {
+public class Admin implements Serializable {
+
+    private static final long serialVersionUID = -1452479182094205206L;
 
     private Integer id;  // 主键id
     private String username;  // 管理员用户名

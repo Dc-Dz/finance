@@ -1,11 +1,15 @@
 package com.qianxia.finance.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 角色表
  */
-public class Role {
+public class Role implements Serializable{
+
+    private static final long serialVersionUID = 4392149277673980445L;
+
     private Integer id;  // 主键
 
     private String role;  // 角色

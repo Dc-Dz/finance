@@ -4,6 +4,7 @@ import com.qianxia.finance.domain.Admin;
 import com.qianxia.finance.domain.Permissions;
 import com.qianxia.finance.domain.User;
 import com.qianxia.finance.service.UserService;
+import com.qianxia.finance.utils.MyByteSource;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -75,7 +76,7 @@ public class UserRealm extends AuthorizingRealm{
             if (result == 1){
                 session.setAttribute("loginUser",user);
                 System.out.println(user.getUsername() + "登录了系统");
-                return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), ByteSource.Util.bytes(user.getSalt()),"");
+                return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), new MyByteSource(user.getSalt()),"");
             }
         }
 

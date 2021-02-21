@@ -3,6 +3,7 @@ package com.qianxia.finance.common.shiro;
 import com.qianxia.finance.domain.Admin;
 import com.qianxia.finance.domain.Permissions;
 import com.qianxia.finance.service.AdminService;
+import com.qianxia.finance.utils.MyByteSource;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -76,7 +77,7 @@ public class AdminRealm extends AuthorizingRealm {
             if (result == 1){
                 session.setAttribute("loginAdmin",admin);
                 System.out.println(admin.getUsername() + "登录了系统");
-                return new SimpleAuthenticationInfo(admin.getUsername(),admin.getPassword(), ByteSource.Util.bytes(admin.getSalt().getBytes()),"");
+                return new SimpleAuthenticationInfo(admin.getUsername(),admin.getPassword(), new MyByteSource(admin.getSalt()),"");
             }
         }
 
