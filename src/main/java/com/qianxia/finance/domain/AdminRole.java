@@ -1,9 +1,11 @@
 package com.qianxia.finance.domain;
 
+import java.io.Serializable;
+
 /**
  * 管理员角色
  */
-public class AdminRole {
+public class AdminRole implements Serializable{
     private Integer id;  // 主键
 
     private Integer adminId;  // 管理员id

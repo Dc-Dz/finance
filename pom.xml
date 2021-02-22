@@ -10,7 +10,8 @@
     </parent>
     <groupId>com.qianxia</groupId>
     <artifactId>finance</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
+    <packaging>war</packaging>
     <name>finance</name>
     <description>Demo project for Spring Boot</description>
 
@@ -29,6 +30,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--&lt;!&ndash;排除SpringBoot提供的内嵌tomcat，改用外置的tomcat&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <!--MyBatis集成SpringBoot依赖-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -135,6 +142,7 @@
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
                 </configuration>
+
             </plugin>
 
             <plugin>

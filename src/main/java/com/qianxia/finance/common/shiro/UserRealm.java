@@ -6,10 +6,7 @@ import com.qianxia.finance.domain.User;
 import com.qianxia.finance.service.UserService;
 import com.qianxia.finance.utils.MyByteSource;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -62,6 +59,7 @@ public class UserRealm extends AuthorizingRealm{
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
         System.out.println("调用了认证方法");
+
         // 获取身份信息
         String principal = (String) token.getPrincipal();
 
@@ -76,7 +74,7 @@ public class UserRealm extends AuthorizingRealm{
             if (result == 1){
                 session.setAttribute("loginUser",user);
                 System.out.println(user.getUsername() + "登录了系统");
-                return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), new MyByteSource(user.getSalt()),"");
+                return new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(), new MyByteSource(user.getSalt()),this.getName());
             }
         }
 

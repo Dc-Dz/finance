@@ -1,9 +1,11 @@
 package com.qianxia.finance.domain;
 
+import java.io.Serializable;
+
 /**
  * 角色权限表
  */
-public class RolePermission {
+public class RolePermission implements Serializable{
 
     private Integer id;  // 主键
     private Integer roleId;  // 角色id

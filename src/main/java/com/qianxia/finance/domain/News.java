@@ -1,11 +1,12 @@
 package com.qianxia.finance.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 新闻资讯表
  */
-public class News {
+public class News implements Serializable{
 
    private Integer id;  // 新闻资讯id
    private String title;  // 标题

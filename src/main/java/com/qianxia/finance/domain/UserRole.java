@@ -1,9 +1,11 @@
 package com.qianxia.finance.domain;
 
+import java.io.Serializable;
+
 /**
  * 用户角色表
  */
-public class UserRole {
+public class UserRole implements Serializable {
     private Integer id;  // 主键
 
     private Integer userId;  // 用户id

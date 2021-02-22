@@ -32,6 +32,12 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setSecurityManager(defaultWebSecurityManager);
 
         Map<String,String> map = new LinkedHashMap<>();
+
+        // 授权
+        map.put("/user/**","roles[user]");
+        map.put("/admin/**","roles[admin]");
+
+        // 过滤请求
         map.put("/","anon");
         map.put("/index.html","anon");
         map.put("/bootstrap/**","anon");
@@ -39,11 +45,14 @@ public class ShiroConfig {
         map.put("/js/**","anon");
         map.put("/lyear/**","anon");
         map.put("/error/**","anon");
-        map.put("/toregister.html/**","anon");
+        map.put("/toregister.html","anon");
         map.put("/login/**","anon");
         map.put("/**","authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
+
+        // 设置认证页面
+        shiroFilterFactoryBean.setLoginUrl("/");
 
         return shiroFilterFactoryBean;
     }
@@ -61,6 +70,8 @@ public class ShiroConfig {
         // 关联realm
         securityManager.setRealms(list);
 
+//        securityManager.setRealm(userRealm);
+
         // 设置多个realm认证策略
         ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();
 
@@ -70,7 +81,7 @@ public class ShiroConfig {
          * FirstSuccessfulStrategy ：第一个realm认证成功，就算成功
          * AllSuccessfulStrategy ：所有的realm认证成功，才算成功
          */
-        authenticator.setAuthenticationStrategy(new AtLeastOneSuccessfulStrategy());
+//        authenticator.setAuthenticationStrategy(new AtLeastOneSuccessfulStrategy());
         return securityManager;
     }
 

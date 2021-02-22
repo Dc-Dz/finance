@@ -49,7 +49,7 @@
         WHERE a.username = #{username}
     </select>
 
-    <select id="queryPermissionsByRoleId" resultMap="AdminMap">
+    <select id="queryPermissionsByRoleId" resultType="com.qianxia.finance.domain.Permissions">
         SELECT
             r.role,
             p.id,

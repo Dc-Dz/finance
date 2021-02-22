@@ -77,7 +77,7 @@ public class AdminRealm extends AuthorizingRealm {
             if (result == 1){
                 session.setAttribute("loginAdmin",admin);
                 System.out.println(admin.getUsername() + "登录了系统");
-                return new SimpleAuthenticationInfo(admin.getUsername(),admin.getPassword(), new MyByteSource(admin.getSalt()),"");
+                return new SimpleAuthenticationInfo(admin.getUsername(),admin.getPassword(), new MyByteSource(admin.getSalt()),this.getName());
             }
         }
 
